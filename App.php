@@ -8,7 +8,7 @@ class App
 	/**
 	*	@description	Fetch controllers dynamically
 	*/
-	public static	function __callStatic($class,$args)
+	public function __call($class, $args)
 	{
 		$class			=	array_values(array_filter(explode('_',$class)));
 		$className		=	'\\SoundConcepts\\'.$class[0].'\\Controller';

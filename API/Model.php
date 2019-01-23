@@ -1,11 +1,14 @@
 <?php
-namespace SoundConcepts\Model;
+namespace SoundConcepts\API;
 /**
 *	@description	Main requester for the call
 */
-class API extends \Nubersoft\API\Model
+class Model extends \Nubersoft\API\Model
 {
 	private	$settings	=	[];
+	private	static	$username;
+	private	static	$password;
+	private	static	$subdomain;
 	/**
 	 *	@description	Sets the connection settings
 	 *	@param	$username	[string]	Your username provided by SoundConcepts
@@ -15,13 +18,19 @@ class API extends \Nubersoft\API\Model
 	public	function __construct()
 	{
 		# Remove spaces
-		$args	=	array_map('trim', func_get_args());
+		$args	=	array_filter(array_map('trim', func_get_args()));
+		# Set credentials if input, otherwise ignore
+		if(!empty($args) && count($args) == 3) {
+			self::$username		=	$args[0];
+			self::$password		=	$args[1];
+			self::$subdomain	=	$args[2];
+		}
 		# Assign username (required from SoundConcepts)
-		$this->settings['master_username']	=	(!empty($args[0]))? $args[0] : false;
+		$this->settings['master_username']	=	(!empty($args[0]))? $args[0] : self::$username;
 		# Assign password (required from SoundConcepts)
-		$this->settings['master_password']	=	(!empty($args[1]))? $args[1] : false;
+		$this->settings['master_password']	=	(!empty($args[1]))? $args[1] : self::$password;
 		# Assign subdomain (required from SoundConcepts)
-		$this->settings['subdomain']		=	(!empty($args[2]))? $args[2] : false;
+		$this->settings['subdomain']		=	(!empty($args[2]))? $args[2] : self::$subdomain;
 		# Stop if the none of the credentials are filled
 		if(count(array_filter($this->settings)) < 3) {
 			throw new \Exception("");

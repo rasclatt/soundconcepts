@@ -1,10 +1,13 @@
 <?php
-namespace SoundConcepts;
+namespace SoundConcepts\Credits;
 
 use \Nubersoft\ArrayWorks;
 
-class Controller extends \SoundConcepts\Model\API
+class Controller extends \SoundConcepts\Credits
 {
+	/**
+	 *	@description	Quick call to retrieve all the credit progams
+	 */
 	public	function getCreditPrograms($type = false)
 	{
 		$new	=	[];

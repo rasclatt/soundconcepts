@@ -1,0 +1,19 @@
+{
+    "name": "rasclatt/SoundConcepts",
+    "type": "library",
+    "description": "Class Library For the SoundConcepts API",
+    "keywords": ["SoundConcepts","API","framework","mlm"],
+    "homepage": "https://github.com/rasclatt/SoundConcepts",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan Rayner",
+            "email": "rasclatt@me.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "rasclatt/nubersoft": ""
+    }
+}

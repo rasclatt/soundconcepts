@@ -1,16 +1,16 @@
 <?php
-namespace SoundConcepts;
+namespace SoundConcepts\Credits;
 /**
  *	@description	
  */
-class Credits extends \SoundConcepts\Model\API
+class Model extends \SoundConcepts\API\Model
 {
 	protected	$errors	=	[];
 	private		$data;
 	/**
 	 *	@description	
 	 */
-	public	function addCredits($distid, $assetid, $qty, $description = 'iTrack Added', $exp = false)
+	public	function addCredits($distid, $assetid, $qty, $description = 'Added by API', $exp = false)
 	{
 		$args	=	[
 			'distributor_id' => $distid,

@@ -3,12 +3,12 @@ namespace SoundConcepts\User;
 
 class Controller extends \SoundConcepts\User\Model
 {
-	public	static	function userExists($id)
+	public	function userExists($id)
 	{
-		return self::distIdExists($id);
+		return $this->distIdExists($id);
 	}
 	
-	public	static	function createUser(array $settings)
+	public	function createUser(array $settings)
 	{
 		foreach($settings as $key => $value)
 			$settings[$key]	=	trim($value);
@@ -21,7 +21,7 @@ class Controller extends \SoundConcepts\User\Model
 		$data['subscription_level']	=	(!empty($settings['subscription_level']))? $settings['subscription_level'] : 'normal';
 		$data['first_name']			=	(!empty($settings['first_name']))? $settings['first_name'] : false;
 		$data['last_name']			=	(!empty($settings['last_name']))? $settings['last_name'] : false;
-		$data['country']		=	(!empty($settings['country']))? $settings['country'] : false;
+		$data['country']			=	(!empty($settings['country']))? $settings['country'] : false;
 		/*
 		$settings['phone']
 		$settings['address1']
@@ -37,11 +37,11 @@ class Controller extends \SoundConcepts\User\Model
 			
 			$settings[$key]	=	$value;
 		}
-		if(!self::distIdExists($data['distributor_id']))
+		if(!$this->distIdExists($data['distributor_id']))
 			# Add user
-			self::addUser($settings);
+			$this->addUser($settings);
 		# Check exists
-		return self::distIdExists($data['distributor_id']);
+		return $this->distIdExists($data['distributor_id']);
 	}
 	
 	public	static	function updateUser(array $settings)
@@ -56,17 +56,17 @@ class Controller extends \SoundConcepts\User\Model
 			
 			$settings[$key]	=	$value;
 		}
-		if(!self::distIdExists($data['distributor_id']))
+		if(!$this->distIdExists($data['distributor_id']))
 			# Add user
-			self::addUser($settings);
+			$this->addUser($settings);
 		else
 			# Check exists
-			return self::modifyUser($settings);
+			return $this->modifyUser($settings);
 	}
 	
 	public	static	function getUserInfo($id)
 	{
-		return (self::userExists($id))? array_merge(self::distInfo($id)['success']['user'],self::search(['distributor_id'=>$id])['users'][0]) : false;
+		return ($this->userExists($id))? array_merge($this->distInfo($id)['success']['user'],$this->search(['distributor_id'=>$id])['users'][0]) : false;
 			
 	}
 }
