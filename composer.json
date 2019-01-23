@@ -1,5 +1,5 @@
 {
-    "name": "rasclatt/SoundConcepts",
+    "name": "rasclatt/soundconcepts",
     "type": "library",
     "description": "Class Library For the SoundConcepts API",
     "keywords": ["SoundConcepts","API","framework","mlm"],
