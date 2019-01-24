@@ -3,7 +3,7 @@ namespace SoundConcepts\Credits;
 
 use \Nubersoft\ArrayWorks;
 
-class Controller extends \SoundConcepts\Credits\Controller
+class Controller extends \SoundConcepts\Credits\Model
 {
 	/**
 	 *	@description	Quick call to retrieve all the credit progams
