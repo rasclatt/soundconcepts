@@ -6,6 +6,17 @@ use \Nubersoft\nReflect as Reflect;
 class App
 {
 	/**
+	*	@description	In order to use this exclusively for dynamic controllers,
+	*					you need to provide the username, password, and subdomain
+	*/
+	public	function __construct()
+	{
+		$args	=	func_get_args();
+		if(!empty($args)) {
+			new API\Model(...$args);
+		}
+	}
+	/**
 	*	@description	Fetch controllers dynamically
 	*/
 	public function __call($class, $args)

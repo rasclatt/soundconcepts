@@ -33,7 +33,7 @@ class Model extends \Nubersoft\API\Model
 		$this->settings['subdomain']		=	(!empty($args[2]))? $args[2] : self::$subdomain;
 		# Stop if the none of the credentials are filled
 		if(count(array_filter($this->settings)) < 3) {
-			throw new \Exception("");
+			throw new \Exception("API credentials can not be left empty. Use any instance of \\Nubersoft\\API\\Model with username, password, and subdomain in the construct.");
 		}
 		
 		return parent::__construct();
