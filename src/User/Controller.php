@@ -44,7 +44,7 @@ class Controller extends \SoundConcepts\User\Model
 		return $this->distIdExists($data['distributor_id']);
 	}
 	
-	public	static	function updateUser(array $settings)
+	public	function updateUser(array $settings)
 	{
 		foreach($settings as $key => $value)
 			$settings[$key]	=	trim($value);
@@ -64,7 +64,7 @@ class Controller extends \SoundConcepts\User\Model
 			return $this->modifyUser($settings);
 	}
 	
-	public	static	function getUserInfo($id)
+	public	function getUserInfo($id)
 	{
 		return ($this->userExists($id))? array_merge($this->distInfo($id)['success']['user'],$this->search(['distributor_id'=>$id])['users'][0]) : false;
 			
