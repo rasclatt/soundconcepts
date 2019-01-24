@@ -2,7 +2,7 @@
 
 This is a small libary to handle the SoundConcepts API requests. It is currently in development, so use at your ownr risk! Actually there isn't much risk involved, it really is just not built out as far as it could be.
 
-It requires the Nubersoft class library `rasclatt/nubersoft` and requires others besides that one.
+This class does require the Nubersoft class library ( [rasclatt/nubersoft](https://github.com/rasclatt/nubersoft) ) but requires no others besides that one. If need be, you can install the `src` as `SoundConcepts` in order for the class to resolve the namespace properly in your autoloader. The same can be said for the nubersoft class library.
 
 ###### Example 1) Create New User
 
